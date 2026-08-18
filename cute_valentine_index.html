@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For Aditi 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box} body{font-family:Poppins,sans-serif;background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);background-size:400% 400%;animation:bg 12s ease infinite;overflow:hidden;color:#522}
+@keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+.page{display:none;min-height:100vh;align-items:center;justify-content:center;padding:24px}.active{display:flex}
+.card{width:min(95%,480px);background:rgba(255,255,255,.78);backdrop-filter:blur(18px);padding:32px;border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,.2);text-align:center}
+h1,h2{font-family:"Playfair Display",serif} h1{font-size:2.2rem;margin:.4rem 0 1rem} p{line-height:1.7}
+button{border:none;border-radius:999px;padding:14px 24px;background:#ff4d88;color:#fff;font-weight:600;cursor:pointer;margin:8px;box-shadow:0 10px 25px rgba(255,77,136,.35)}
+.secondary{background:#fff;color:#ff4d88}.emoji{font-size:64px}.gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}.ph{background:#fff;border-radius:18px;padding:18px;font-size:40px}.small{font-size:.9rem;opacity:.75;margin-top:8px}
+#no{position:absolute}.wrap{position:relative;height:90px}
+.heart{position:fixed;bottom:-20px;font-size:18px;animation:float 7s linear forwards}@keyframes float{to{transform:translateY(-120vh);opacity:0}}
+</style>
+</head>
+<body>
+<section id="p1" class="page active"><div class="card"><div class="emoji">🐱💌</div><h1>Hi Aditi</h1><p>I made this tiny little website just for you.</p><button onclick="show('p2')">Open it ✨</button></div></section>
+<section id="p2" class="page"><div class="card"><div class="emoji">🌷</div><h1>Will you be my Valentine?</h1><div class="wrap"><button onclick="yes()">YES 💖</button><button id="no">No 🙈</button></div><div class="small">The “No” button has other plans…</div></div></section>
+<section id="p3" class="page"><div class="card"><div class="emoji">💗</div><h1>To You</h1><p>Thank you for the little things you do—the random chats, the laughs, and simply being you. I hope this makes you smile even for a moment.</p><button onclick="show('p4')">One more thing →</button></div></section>
+<section id="p4" class="page"><div class="card"><div class="emoji">📸</div><h1>Our Gallery</h1><p class="small">Replace these with your actual photos later.</p><div class="gallery"><div class="ph">🩷</div><div class="ph">🌸</div><div class="ph">☕</div><div class="ph">🎀</div></div><button onclick="show('p5')">Final page 💌</button></div></section>
+<section id="p5" class="page"><div class="card"><div class="emoji">🌙❤️</div><h1>I Like You.</h1><p>Whether today becomes a memory or the start of something beautiful, I'm really glad I met you.</p><p style="margin-top:14px;font-weight:600">— Yours 🌷</p></div></section>
+<script>
+const no=document.getElementById('no');
+function show(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active')}
+no.addEventListener('mouseover',()=>{const w=280,h=40;no.style.left=Math.random()*w+'px';no.style.top=Math.random()*h+'px'});
+function yes(){confetti({particleCount:220,spread:120,origin:{y:.6}});show('p3')}
+setInterval(()=>{const d=document.createElement('div');d.className='heart';d.textContent=Math.random()>.5?'❤':'💖';d.style.left=Math.random()*100+'vw';d.style.fontSize=(16+Math.random()*18)+'px';document.body.appendChild(d);setTimeout(()=>d.remove(),7000)},380);
+</script>
+</body></html>
