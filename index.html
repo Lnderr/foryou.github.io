@@ -11,6 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -76,7 +77,13 @@ button{
     font-weight:600;
     cursor:pointer;
     margin:8px;
-    box-shadow:0 10px 25px rgba(255,77,136,.35)
+    box-shadow:0 10px 25px rgba(255,77,136,.35);
+    transition:transform .2s ease, box-shadow .2s ease
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(255,77,136,.4)
 }
 
 .secondary{
@@ -121,7 +128,9 @@ button{
     position:fixed;
     bottom:-20px;
     font-size:18px;
-    animation:float 7s linear forwards
+    animation:float 7s linear forwards;
+    pointer-events:none;
+    z-index:5
 }
 
 @keyframes float{
@@ -131,7 +140,10 @@ button{
     }
 }
 
-/* MUSIC BUTTON */
+
+/* =========================
+   MUSIC BUTTON
+========================= */
 
 #musicToggle{
     position:fixed;
@@ -143,12 +155,51 @@ button{
     margin:0;
 }
 
-/* MUSIC INTRO */
+
+/* =========================
+   MUSIC INTRO
+========================= */
 
 #musicGate{
     position:fixed;
     inset:0;
     z-index:2000;
+    opacity:1;
+    transition:opacity 1.2s ease;
+}
+
+#musicGate.fade-out{
+    opacity:0;
+    pointer-events:none;
+}
+
+#musicGate .card{
+    transition:
+        transform 1.2s ease,
+        opacity 1.2s ease;
+}
+
+#musicGate.fade-out .card{
+    transform:scale(.95) translateY(-10px);
+    opacity:0;
+}
+
+
+/* =========================
+   HELLO PAGE FADE IN
+========================= */
+
+#p1{
+    opacity:0;
+    transform:scale(1.03);
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+#p1.fade-in{
+    opacity:1;
+    transform:scale(1);
 }
 
 </style>
@@ -156,22 +207,35 @@ button{
 
 <body>
 
-<!-- MUSIC -->
+
+<!-- =========================
+     MUSIC
+========================= -->
 
 <audio id="bgMusic" loop>
     <source src="music/song.mp3" type="audio/mpeg">
 </audio>
 
-<!-- MUSIC TOGGLE -->
 
-<button id="musicToggle" onclick="toggleMusic()" style="display:none;">
+<!-- =========================
+     MUSIC TOGGLE
+========================= -->
+
+<button
+    id="musicToggle"
+    onclick="toggleMusic()"
+    style="display:none;"
+>
     🎵 Music: ON
 </button>
 
 
-<!-- MUSIC INTRO -->
+<!-- =========================
+     MUSIC INTRO
+========================= -->
 
 <section id="musicGate" class="page active">
+
     <div class="card">
 
         <div class="emoji">💌🎵</div>
@@ -191,15 +255,21 @@ button{
             or continue silently, I won't judge :>
         </p>
 
-        <button class="secondary" onclick="continueSilent()">
+        <button
+            class="secondary"
+            onclick="continueSilent()"
+        >
             Continue silently 🤫
         </button>
 
     </div>
+
 </section>
 
 
-<!-- PAGE 1 -->
+<!-- =========================
+     PAGE 1
+========================= -->
 
 <section id="p1" class="page">
 
@@ -222,7 +292,9 @@ button{
 </section>
 
 
-<!-- PAGE 2 -->
+<!-- =========================
+     PAGE 2
+========================= -->
 
 <section id="p2" class="page">
 
@@ -255,7 +327,9 @@ button{
 </section>
 
 
-<!-- PAGE 3 -->
+<!-- =========================
+     PAGE 3
+========================= -->
 
 <section id="p3" class="page">
 
@@ -278,7 +352,9 @@ button{
 </section>
 
 
-<!-- PAGE 4 -->
+<!-- =========================
+     PAGE 4
+========================= -->
 
 <section id="p4" class="page">
 
@@ -310,7 +386,9 @@ button{
 </section>
 
 
-<!-- PAGE 5 -->
+<!-- =========================
+     PAGE 5
+========================= -->
 
 <section id="p5" class="page">
 
@@ -336,12 +414,17 @@ button{
 
 <script>
 
+
 /* =========================
    MUSIC SYSTEM
 ========================= */
 
-const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
+const bgMusic =
+    document.getElementById('bgMusic');
+
+const musicToggle =
+    document.getElementById('musicToggle');
+
 
 function startMusic(){
 
@@ -349,23 +432,78 @@ function startMusic(){
 
     bgMusic.play();
 
-    document.getElementById('musicGate').classList.remove('active');
-    document.getElementById('p1').classList.add('active');
+    const gate =
+        document.getElementById('musicGate');
+
+    const firstPage =
+        document.getElementById('p1');
 
     musicToggle.style.display = 'block';
 
+    /* Start the fade */
+
+    gate.classList.add('fade-out');
+
+
+    /* Wait for fade to finish */
+
+    setTimeout(() => {
+
+        gate.classList.remove('active');
+
+        firstPage.classList.add('active');
+
+        /* Start HELLOOO fade */
+
+        setTimeout(() => {
+
+            firstPage.classList.add('fade-in');
+
+        },50);
+
+    },1200);
+
 }
+
 
 function continueSilent(){
 
-    document.getElementById('musicGate').classList.remove('active');
-    document.getElementById('p1').classList.add('active');
+    const gate =
+        document.getElementById('musicGate');
+
+    const firstPage =
+        document.getElementById('p1');
 
     musicToggle.style.display = 'block';
 
-    musicToggle.textContent = '🔇 Music: OFF';
+    musicToggle.textContent =
+        '🔇 Music: OFF';
+
+    /* Start the fade */
+
+    gate.classList.add('fade-out');
+
+
+    /* Wait for fade to finish */
+
+    setTimeout(() => {
+
+        gate.classList.remove('active');
+
+        firstPage.classList.add('active');
+
+        /* Start HELLOOO fade */
+
+        setTimeout(() => {
+
+            firstPage.classList.add('fade-in');
+
+        },50);
+
+    },1200);
 
 }
+
 
 function toggleMusic(){
 
@@ -373,13 +511,15 @@ function toggleMusic(){
 
         bgMusic.play();
 
-        musicToggle.textContent = '🎵 Music: ON';
+        musicToggle.textContent =
+            '🎵 Music: ON';
 
     }else{
 
         bgMusic.pause();
 
-        musicToggle.textContent = '🔇 Music: OFF';
+        musicToggle.textContent =
+            '🔇 Music: OFF';
 
     }
 
@@ -394,7 +534,9 @@ function show(id){
 
     document
         .querySelectorAll('.page')
-        .forEach(p => p.classList.remove('active'));
+        .forEach(p =>
+            p.classList.remove('active')
+        );
 
     document
         .getElementById(id)
@@ -407,15 +549,20 @@ function show(id){
    NO BUTTON
 ========================= */
 
-const no = document.getElementById('no');
+const no =
+    document.getElementById('no');
+
 
 no.addEventListener('mouseover',()=>{
 
     const w = 280;
     const h = 40;
 
-    no.style.left = Math.random()*w+'px';
-    no.style.top = Math.random()*h+'px';
+    no.style.left =
+        Math.random()*w+'px';
+
+    no.style.top =
+        Math.random()*h+'px';
 
 });
 
@@ -443,12 +590,15 @@ function yes(){
 
 setInterval(()=>{
 
-    const d = document.createElement('div');
+    const d =
+        document.createElement('div');
 
     d.className = 'heart';
 
     d.textContent =
-        Math.random() > .5 ? '❤' : '💖';
+        Math.random() > .5
+        ? '❤'
+        : '💖';
 
     d.style.left =
         Math.random()*100+'vw';
@@ -463,6 +613,7 @@ setInterval(()=>{
     },7000);
 
 },380);
+
 
 </script>
 
