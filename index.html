@@ -67,22 +67,10 @@ transition:.25s;
 box-shadow:0 10px 25px rgba(255,77,136,.35);
 }
 
-button:hover{
-transform:translateY(-2px);
-}
-
-.secondary{
-background:#fff;
-color:#ff4d88;
-}
-
+button:hover{transform:translateY(-2px)}
+.secondary{background:#fff;color:#ff4d88}
 .emoji{font-size:64px}
-
-.small{
-font-size:.9rem;
-opacity:.75;
-margin-top:8px;
-}
+.small{font-size:.9rem;opacity:.75;margin-top:8px}
 
 .gallery{
 display:grid;
@@ -98,10 +86,7 @@ padding:18px;
 font-size:40px;
 }
 
-.wrap{
-position:relative;
-height:110px;
-}
+.wrap{position:relative;height:110px}
 
 .heart{
 position:fixed;
@@ -112,14 +97,10 @@ z-index:5;
 }
 
 @keyframes float{
-to{
-transform:translateY(-120vh);
-opacity:0;
-}
+to{transform:translateY(-120vh);opacity:0}
 }
 
-/* Music */
-
+/* MUSIC */
 #musicToggle{
 position:fixed;
 bottom:20px;
@@ -138,42 +119,17 @@ opacity:1;
 transition:opacity 1.2s ease;
 }
 
-#musicGate.fade-out{
-opacity:0;
-pointer-events:none;
-}
+#musicGate.fade-out{opacity:0;pointer-events:none}
+#musicGate .card{transition:1.2s ease}
+#musicGate.fade-out .card{opacity:0;transform:scale(.95) translateY(-10px)}
 
-#musicGate .card{
-transition:1.2s ease;
-}
+/* HELLO */
+#p1{opacity:0;transform:scale(1.03);transition:1.2s ease}
+#p1.fade-in{opacity:1;transform:scale(1)}
 
-#musicGate.fade-out .card{
-opacity:0;
-transform:scale(.95) translateY(-10px);
-}
-
-/* Hello transition */
-
-#p1{
-opacity:0;
-transform:scale(1.03);
-transition:1.2s ease;
-}
-
-#p1.fade-in{
-opacity:1;
-transform:scale(1);
-}
-
-/* NO button */
-
-#no{
-position:absolute;
-}
-
-#no.shake{
-animation:shake .22s ease;
-}
+/* NO BUTTON */
+#no{position:absolute}
+#no.shake{animation:shake .22s ease}
 
 @keyframes shake{
 0%{transform:translateX(0)}
@@ -200,40 +156,77 @@ transition:.2s;
 pointer-events:none;
 }
 
-#excuse.show{
-opacity:1;
-transform:translateX(-50%) translateY(-4px);
-}
+#excuse.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
 
-/* YES cinematic */
-
-.card.movie-out{
-animation:movieOut .9s cubic-bezier(.22,1,.36,1) forwards;
-}
+/* YES */
+.card.movie-out{animation:movieOut .9s cubic-bezier(.22,1,.36,1) forwards}
 
 @keyframes movieOut{
-0%{
-transform:scale(1) rotate(0deg);
-opacity:1;
-}
-30%{
-transform:scale(1.06) rotate(-2deg);
-}
-100%{
-transform:scale(.75) rotate(6deg);
-opacity:0;
-filter:blur(8px);
-}
+0%{transform:scale(1) rotate(0);opacity:1}
+30%{transform:scale(1.06) rotate(-2deg)}
+100%{transform:scale(.75) rotate(6deg);opacity:0;filter:blur(8px)}
 }
 
-.yes-pop{
-animation:yesPop .35s ease;
-}
-
+.yes-pop{animation:yesPop .35s ease}
 @keyframes yesPop{
 0%{transform:scale(1)}
 50%{transform:scale(1.18)}
 100%{transform:scale(1)}
+}
+
+/* MOVIE TICKET */
+.ticket{
+width:min(95%,460px);
+background:#fff8ef;
+border-radius:24px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,.18);
+position:relative;
+}
+
+.ticket::before,.ticket::after{
+content:"";
+position:absolute;
+width:26px;
+height:26px;
+background:#f5bfd4;
+border-radius:50%;
+top:50%;
+transform:translateY(-50%);
+}
+
+.ticket::before{left:-13px}
+.ticket::after{right:-13px}
+
+.ticket-top{background:#ff4d88;color:white;padding:18px}
+.stub{font-size:.75rem;letter-spacing:3px;opacity:.9}
+.cinema{margin-top:6px;font-weight:600}
+
+.ticket-body{padding:28px;text-align:center}
+.movie{
+font-family:'Playfair Display',serif;
+font-size:2rem;
+color:#d6336c;
+}
+
+.names{margin:18px 0;font-size:1.15rem;font-weight:600}
+
+.details{display:flex;justify-content:space-around;margin-top:18px}
+.details span{display:block;font-size:.7rem;color:#888}
+.details strong{font-size:1.15rem}
+
+.ticket-bottom{
+padding:22px;
+border-top:2px dashed #ffc2d6;
+text-align:center;
+}
+
+.ticket.rip{animation:ripTicket .9s ease forwards}
+
+@keyframes ripTicket{
+0%{transform:scale(1);opacity:1}
+35%{transform:scale(1.04) rotate(-2deg)}
+100%{transform:translateY(-120px) rotate(8deg) scale(.82);opacity:0;filter:blur(10px)}
 }
 </style>
 </head>
@@ -245,77 +238,78 @@ animation:yesPop .35s ease;
 
 <button id="musicToggle" onclick="toggleMusic()">🎵 Music: ON</button>
 
+<!-- INTRO -->
 <section id="musicGate" class="page active">
 <div class="card">
 <div class="emoji">💌🎵</div>
 <h1>Before you continue...</h1>
 <p>I picked a little something to play while you look around.</p>
-
 <button onclick="startMusic()">🎵 Turn on the music</button>
-
 <p class="small">or continue silently, I won't judge :></p>
-
-<button class="secondary" onclick="continueSilent()">
-Continue silently 🤫
-</button>
+<button class="secondary" onclick="continueSilent()">Continue silently 🤫</button>
 </div>
 </section>
 
+<!-- PAGE 1 -->
 <section id="p1" class="page">
 <div class="card">
 <div class="emoji">🐱💌</div>
 <h1>HELLOOO!!</h1>
 <p>Ginawa ko tongg website nato para sauuu</p>
-
-<button onclick="show('p2')">
-Aysows ano gusto mo, Lander? ✨
-</button>
+<button onclick="show('p2')">Aysows ano gusto mo, Lander? ✨</button>
 </div>
 </section>
 
+<!-- PAGE 2 -->
 <section id="p2" class="page">
 <div class="card">
 <div class="emoji">🌷</div>
-
 <h1>Do you want to watch a movie with me?</h1>
 
 <div class="wrap">
-
 <div id="excuse"></div>
-
-<button id="yesBtn" onclick="yes()">
-YESSS 💖
-</button>
-
-<button id="no">
-Ayoko nga🙈
-</button>
-
+<button id="yesBtn" onclick="yes()">YESSS 💖</button>
+<button id="no">Ayoko nga🙈</button>
 </div>
 
 <div class="small">Papayag ka talagaaa >:)</div>
-
 </div>
 </section>
 
+<!-- PAGE 3 -->
 <section id="p3" class="page">
-<div class="card">
-<div class="emoji">💗</div>
-<h1>Placeholder</h1>
-<p>Placeholder</p>
+<div class="ticket" id="ticket">
 
-<button onclick="show('p4')">
-OO NGA PALA →
-</button>
+<div class="ticket-top">
+<div class="stub">ADMIT ONE</div>
+<div class="cinema">🎬 Lander Pictures</div>
+</div>
+
+<div class="ticket-body">
+<div class="movie">Movie Night 🍿</div>
+
+<div class="names">Andrea ✿ Lander</div>
+
+<div class="details">
+<div><span>ROW</span><strong>A</strong></div>
+<div><span>SEAT</span><strong>02</strong></div>
+<div><span>DATE</span><strong>Secret...</strong></div>
+</div>
+</div>
+
+<div class="ticket-bottom">
+<button class="tear" onclick="tearTicket()">✂ Tear the ticket</button>
+</div>
+
 </div>
 </section>
 
+<!-- PAGE 4 -->
 <section id="p4" class="page">
 <div class="card">
 <div class="emoji">📸</div>
-<h1>Placeholder</h1>
-
-<p class="small">Placeholder Text</p>
+<h1>Our Little Gallery</h1>
+<p class="small">Core memories incoming 🌸</p>
 
 <div class="gallery">
 <div class="ph">🩷</div>
@@ -324,86 +318,52 @@ OO NGA PALA →
 <div class="ph">🎀</div>
 </div>
 
-<button onclick="show('p5')">
-Final page 💌
-</button>
+<button onclick="show('p5')">One last thing 💌</button>
 </div>
 </section>
 
+<!-- PAGE 5 -->
 <section id="p5" class="page">
 <div class="card">
 <div class="emoji">🌙❤️</div>
 <h1>Crush kitaa</h1>
-
-<p>
-Whether today becomes a memory or the start of something beautiful,
-I'm really glad I met you.
-</p>
-
-<p style="margin-top:14px;font-weight:600">
-— Yours 🌷
-</p>
-
+<p>Whether today becomes a memory or the start of something beautiful, I'm really glad I met you.</p>
+<p style="margin-top:14px;font-weight:600">— Yours 🌷</p>
 </div>
 </section>
 
 <script>
-
-/* MUSIC */
-
 const bgMusic=document.getElementById("bgMusic");
 const musicToggle=document.getElementById("musicToggle");
 
 function startMusic(){
-
 bgMusic.volume=.5;
 bgMusic.play();
-
 const gate=document.getElementById("musicGate");
 const hello=document.getElementById("p1");
-
 musicToggle.style.display="block";
-
 gate.classList.add("fade-out");
-
 setTimeout(()=>{
-
 gate.classList.remove("active");
 hello.classList.add("active");
-
-setTimeout(()=>{
-hello.classList.add("fade-in");
-},50);
-
+setTimeout(()=>hello.classList.add("fade-in"),50);
 },1200);
-
 }
 
 function continueSilent(){
-
 const gate=document.getElementById("musicGate");
 const hello=document.getElementById("p1");
-
 musicToggle.style.display="block";
 musicToggle.textContent="🔇 Music: OFF";
-
 gate.classList.add("fade-out");
-
 setTimeout(()=>{
-
 gate.classList.remove("active");
 hello.classList.add("active");
-
-setTimeout(()=>{
-hello.classList.add("fade-in");
-},50);
-
+setTimeout(()=>hello.classList.add("fade-in"),50);
 },1200);
-
 }
 
 function toggleMusic(){
-
 if(bgMusic.paused){
 bgMusic.play();
 musicToggle.textContent="🎵 Music: ON";
@@ -411,135 +371,74 @@ musicToggle.textContent="🎵 Music: ON";
 bgMusic.pause();
 musicToggle.textContent="🔇 Music: OFF";
 }
-
 }
-
-/* PAGE */
 
 function show(id){
-
-document.querySelectorAll(".page")
-.forEach(p=>p.classList.remove("active"));
-
-document.getElementById(id)
-.classList.add("active");
-
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
-
-/* NO BUTTON */
 
 const no=document.getElementById("no");
 const excuse=document.getElementById("excuse");
-
-const excuses=[
-"hala wait 😭",
-"nice try HAHAHA",
-"di pwede 😤",
-"wrong answer 🤨",
-"ayaw ko... char",
-"eh bakit 😭",
-"try mo ulit 😼",
-"no no no 🏃‍♀️"
-];
+const excuses=["hala wait 😭","nice try HAHAHA","di pwede 😤","wrong answer 🤨","ayaw ko... char","eh bakit 😭","try mo ulit 😼","no no no 🏃‍♀️"];
 
 function moveNoButton(){
-
-const w=280;
-const h=55;
-
-excuse.textContent=
-excuses[Math.floor(Math.random()*excuses.length)];
-
+const w=280,h=55;
+excuse.textContent=excuses[Math.floor(Math.random()*excuses.length)];
 excuse.classList.add("show");
-
 no.classList.add("shake");
-
 setTimeout(()=>{
-
 no.classList.remove("shake");
-
 no.style.left=Math.random()*w+"px";
 no.style.top=Math.random()*h+"px";
-
 },180);
-
-setTimeout(()=>{
-excuse.classList.remove("show");
-},900);
-
+setTimeout(()=>excuse.classList.remove("show"),900);
 }
 
 no.addEventListener("mouseover",moveNoButton);
-
-no.addEventListener("click",(e)=>{
-e.preventDefault();
-moveNoButton();
-});
-
-/* YES CINEMATIC */
+no.addEventListener("click",e=>{e.preventDefault();moveNoButton();});
 
 function yes(){
-
 const card=document.querySelector("#p2 .card");
-const yesBtn=document.getElementById("yesBtn");
-
-yesBtn.classList.add("yes-pop");
-
-confetti({
-particleCount:180,
-spread:120,
-origin:{y:.65}
-});
-
-/* Hearts burst */
-
+const btn=document.getElementById("yesBtn");
+btn.classList.add("yes-pop");
+confetti({particleCount:180,spread:120,origin:{y:.65}});
 for(let i=0;i<18;i++){
-
 const h=document.createElement("div");
-
 h.className="heart";
 h.textContent=Math.random()>.5?"💖":"🌸";
-
 h.style.left=(35+Math.random()*30)+"vw";
 h.style.bottom="35vh";
 h.style.fontSize=(20+Math.random()*20)+"px";
-
 document.body.appendChild(h);
-
 setTimeout(()=>h.remove(),7000);
-
 }
-
+setTimeout(()=>card.classList.add("movie-out"),180);
 setTimeout(()=>{
-card.classList.add("movie-out");
-},180);
-
-setTimeout(()=>{
-
 card.classList.remove("movie-out");
 show("p3");
-
 },900);
-
 }
 
-/* Floating hearts */
+function tearTicket(){
+const ticket=document.getElementById("ticket");
+confetti({particleCount:120,spread:90,origin:{y:.55}});
+ticket.classList.add("rip");
+setTimeout(()=>{
+ticket.classList.remove("rip");
+show("p4");
+},900);
+}
 
 setInterval(()=>{
-
 const d=document.createElement("div");
-
 d.className="heart";
 d.textContent=Math.random()>.5?"❤":"💖";
 d.style.left=Math.random()*100+"vw";
 d.style.fontSize=(16+Math.random()*18)+"px";
-
 document.body.appendChild(d);
-
 setTimeout(()=>d.remove(),7000);
-
 },380);
-
 </script>
 </body>
 </html>
