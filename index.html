@@ -419,14 +419,11 @@ top:-200px;
 width:135px;
 padding:10px 10px 24px;
 background:#fff;
-
 box-shadow:
 0 12px 30px rgba(0,0,0,.20),
 0 3px 8px rgba(0,0,0,.08);
-
 border-radius:2px;
 text-align:center;
-
 animation:polaroidFall linear forwards;
 will-change:transform;
 }
@@ -530,35 +527,25 @@ overflow:hidden;
 
 .letter-card{
 width:min(95%,500px);
-
 background:
 linear-gradient(
 rgba(255,250,235,.96),
 rgba(255,248,225,.96)
 );
-
 padding:38px 32px 30px;
-
 border-radius:5px;
-
 box-shadow:
 0 18px 45px rgba(0,0,0,.20),
 0 3px 8px rgba(0,0,0,.08);
-
 position:relative;
-
 transform:rotate(-1deg);
-
 z-index:10;
 }
-
-/* Paper lines */
 
 .letter-card::before{
 content:"";
 position:absolute;
 inset:0;
-
 background:
 repeating-linear-gradient(
 to bottom,
@@ -566,27 +553,19 @@ transparent 0px,
 transparent 31px,
 rgba(190,170,150,.22) 32px
 );
-
 pointer-events:none;
 }
 
-/* Little tape */
-
 .letter-tape{
 position:absolute;
-
 width:95px;
 height:25px;
-
 background:rgba(255,182,193,.55);
-
 top:-10px;
 left:50%;
-
 transform:
 translateX(-50%)
 rotate(-3deg);
-
 box-shadow:0 2px 5px rgba(0,0,0,.08);
 }
 
@@ -685,7 +664,6 @@ transform:scale(1) translateY(0);
 </style>
 </head>
 
-
 <body>
 
 
@@ -693,7 +671,7 @@ transform:scale(1) translateY(0);
 <!-- MUSIC                                    -->
 <!-- ========================================= -->
 
-<audio id="bgMusic" loop>
+<audio id="bgMusic" loop preload="auto">
 <source src="music/song.mp3" type="audio/mpeg">
 </audio>
 
@@ -827,7 +805,6 @@ ADMIT ONE
 
 </div>
 
-
 <div class="ticket-body">
 
 <div class="movie">
@@ -859,7 +836,6 @@ Andrea ✿ Lander
 
 </div>
 
-
 <div class="ticket-bottom">
 
 <button class="tear" onclick="tearTicket()">
@@ -884,7 +860,6 @@ class="polaroid-rain"
 id="polaroidRain">
 </div>
 
-
 <div class="card">
 
 <div class="emoji">
@@ -899,35 +874,25 @@ Our Little Gallery
 Core memories incoming 🌸
 </p>
 
-
 <div class="gallery">
 
 <div class="ph">
-<img
-src="photos/photo1.jpg"
-alt="Memory 1">
+<img src="photos/photo1.jpg" alt="Memory 1">
 </div>
 
 <div class="ph">
-<img
-src="photos/photo2.jpg"
-alt="Memory 2">
+<img src="photos/photo2.jpg" alt="Memory 2">
 </div>
 
 <div class="ph">
-<img
-src="photos/photo3.jpg"
-alt="Memory 3">
+<img src="photos/photo3.jpg" alt="Memory 3">
 </div>
 
 <div class="ph">
-<img
-src="photos/photo4.jpg"
-alt="Memory 4">
+<img src="photos/photo4.jpg" alt="Memory 4">
 </div>
 
 </div>
-
 
 <button onclick="show('p5')">
 One last thing 💌
@@ -986,7 +951,6 @@ May sasabihin pa ako... 💌
 💗
 </div>
 
-
 <div class="letter-card">
 
 <div class="letter-tape"></div>
@@ -1032,7 +996,6 @@ I'd really like to be one of those people.
 
 </div>
 
-
 <button onclick="show('p7')">
 Okay... one last thing 💌
 </button>
@@ -1045,7 +1008,7 @@ Okay... one last thing 💌
 
 
 <!-- ========================================= -->
-<!-- PAGE 7 — FINAL                           -->
+<!-- PAGE 7                                   -->
 <!-- ========================================= -->
 
 <section id="p7" class="page">
@@ -1074,7 +1037,6 @@ I hope this made you smile. 🌷
 </section>
 
 
-
 <script>
 
 
@@ -1089,35 +1051,79 @@ const musicToggle =
 document.getElementById("musicToggle");
 
 
+/* Preload the song */
+
+bgMusic.load();
+
+
 function startMusic(){
 
-bgMusic.volume=.5;
+    /*
+    IMPORTANT:
+    This happens immediately from the button click.
+    There is NO setTimeout before play().
+    */
 
-bgMusic.play();
+    bgMusic.volume = 0.5;
 
-const gate =
-document.getElementById("musicGate");
+    bgMusic.currentTime = 0;
 
-const hello =
-document.getElementById("p1");
+    const playPromise = bgMusic.play();
 
-musicToggle.style.display="block";
+    if(playPromise !== undefined){
 
-gate.classList.add("fade-out");
+        playPromise.then(()=>{
 
-setTimeout(()=>{
+            musicToggle.textContent =
+            "🎵 Music: ON";
 
-gate.classList.remove("active");
+        }).catch(error=>{
 
-hello.classList.add("active");
+            console.log(
+            "Music playback error:",
+            error
+            );
 
-setTimeout(()=>{
+        });
 
-hello.classList.add("fade-in");
+    }
 
-},50);
+    /* Show music button */
 
-},3000);
+    musicToggle.style.display = "block";
+
+
+    /* Start visual transition */
+
+    const gate =
+    document.getElementById("musicGate");
+
+    const hello =
+    document.getElementById("p1");
+
+
+    gate.classList.add("fade-out");
+
+
+    /*
+    This 3000ms ONLY controls
+    when Page 1 appears.
+    It does NOT delay the music.
+    */
+
+    setTimeout(()=>{
+
+        gate.classList.remove("active");
+
+        hello.classList.add("active");
+
+        setTimeout(()=>{
+
+            hello.classList.add("fade-in");
+
+        },50);
+
+    },3000);
 
 }
 
@@ -1209,19 +1215,12 @@ document.getElementById("excuse");
 const excuses=[
 
 "hala wait 😭",
-
 "nice try HAHAHA",
-
 "di pwede 😤",
-
 "wrong answer 🤨",
-
 "ayaw ko... char",
-
 "eh bakit 😭",
-
 "try mo ulit 😼",
-
 "no no no 🏃‍♀️"
 
 ];
@@ -1302,9 +1301,7 @@ btn.classList.add("yes-pop");
 confetti({
 
 particleCount:180,
-
 spread:120,
-
 origin:{y:.65}
 
 });
@@ -1372,9 +1369,7 @@ document.getElementById("ticket");
 confetti({
 
 particleCount:120,
-
 spread:90,
-
 origin:{y:.55}
 
 });
