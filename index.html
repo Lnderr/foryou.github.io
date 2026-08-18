@@ -5,11 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Andrea 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 body{
 font-family:'Poppins',sans-serif;
@@ -35,7 +40,9 @@ padding:24px;
 position:relative;
 }
 
-.active{display:flex}
+.active{
+display:flex;
+}
 
 .card{
 width:min(95%,480px);
@@ -54,7 +61,9 @@ font-size:2.2rem;
 margin:.5rem 0 1rem;
 }
 
-p{line-height:1.7}
+p{
+line-height:1.7;
+}
 
 button{
 border:none;
@@ -69,10 +78,29 @@ transition:.25s;
 box-shadow:0 10px 25px rgba(255,77,136,.35);
 }
 
-button:hover{transform:translateY(-2px)}
-.secondary{background:#fff;color:#ff4d88}
-.emoji{font-size:64px}
-.small{font-size:.9rem;opacity:.75;margin-top:8px}
+button:hover{
+transform:translateY(-2px);
+}
+
+.secondary{
+background:#fff;
+color:#ff4d88;
+}
+
+.emoji{
+font-size:64px;
+}
+
+.small{
+font-size:.9rem;
+opacity:.75;
+margin-top:8px;
+}
+
+
+/* ========================================= */
+/* GALLERY                                   */
+/* ========================================= */
 
 .gallery{
 display:grid;
@@ -98,10 +126,10 @@ object-fit:cover;
 border-radius:13px;
 }
 
-.wrap{
-position:relative;
-height:110px
-}
+
+/* ========================================= */
+/* HEARTS                                    */
+/* ========================================= */
 
 .heart{
 position:fixed;
@@ -114,11 +142,14 @@ z-index:5;
 @keyframes float{
 to{
 transform:translateY(-120vh);
-opacity:0
+opacity:0;
 }
 }
 
-/* MUSIC */
+
+/* ========================================= */
+/* MUSIC                                     */
+/* ========================================= */
 
 #musicToggle{
 position:fixed;
@@ -140,39 +171,45 @@ transition:opacity 1.2s ease;
 
 #musicGate.fade-out{
 opacity:0;
-pointer-events:none
+pointer-events:none;
 }
 
 #musicGate .card{
-transition:1.2s ease
+transition:1.2s ease;
 }
 
 #musicGate.fade-out .card{
 opacity:0;
-transform:scale(.95) translateY(-10px)
+transform:scale(.95) translateY(-10px);
 }
 
-/* HELLO */
+
+/* ========================================= */
+/* PAGE 1                                    */
+/* ========================================= */
 
 #p1{
 opacity:0;
 transform:scale(1.03);
-transition:1.2s ease
+transition:1.2s ease;
 }
 
 #p1.fade-in{
 opacity:1;
-transform:scale(1)
+transform:scale(1);
 }
 
-/* NO BUTTON */
+
+/* ========================================= */
+/* NO BUTTON                                 */
+/* ========================================= */
 
 #no{
-position:absolute
+position:absolute;
 }
 
 #no.shake{
-animation:shake .22s ease
+animation:shake .22s ease;
 }
 
 @keyframes shake{
@@ -197,37 +234,42 @@ font-weight:600;
 white-space:nowrap;
 opacity:0;
 transition:.2s;
-pointer-events:none
+pointer-events:none;
 }
 
 #excuse.show{
 opacity:1;
-transform:translateX(-50%) translateY(-4px)
+transform:translateX(-50%) translateY(-4px);
 }
 
-/* YES */
+
+/* ========================================= */
+/* YES                                       */
+/* ========================================= */
 
 .card.movie-out{
-animation:movieOut .9s cubic-bezier(.22,1,.36,1) forwards
+animation:movieOut .9s cubic-bezier(.22,1,.36,1) forwards;
 }
 
 @keyframes movieOut{
 0%{
 transform:scale(1) rotate(0);
-opacity:1
+opacity:1;
 }
+
 30%{
-transform:scale(1.06) rotate(-2deg)
+transform:scale(1.06) rotate(-2deg);
 }
+
 100%{
 transform:scale(.75) rotate(6deg);
 opacity:0;
-filter:blur(8px)
+filter:blur(8px);
 }
 }
 
 .yes-pop{
-animation:yesPop .35s ease
+animation:yesPop .35s ease;
 }
 
 @keyframes yesPop{
@@ -236,7 +278,10 @@ animation:yesPop .35s ease
 100%{transform:scale(1)}
 }
 
-/* MOVIE TICKET */
+
+/* ========================================= */
+/* MOVIE TICKET                              */
+/* ========================================= */
 
 .ticket{
 width:min(95%,460px);
@@ -260,29 +305,34 @@ top:50%;
 transform:translateY(-50%);
 }
 
-.ticket::before{left:-13px}
-.ticket::after{right:-13px}
+.ticket::before{
+left:-13px;
+}
+
+.ticket::after{
+right:-13px;
+}
 
 .ticket-top{
 background:#ff4d88;
 color:white;
-padding:18px
+padding:18px;
 }
 
 .stub{
 font-size:.75rem;
 letter-spacing:3px;
-opacity:.9
+opacity:.9;
 }
 
 .cinema{
 margin-top:6px;
-font-weight:600
+font-weight:600;
 }
 
 .ticket-body{
 padding:28px;
-text-align:center
+text-align:center;
 }
 
 .movie{
@@ -294,23 +344,23 @@ color:#d6336c;
 .names{
 margin:18px 0;
 font-size:1.15rem;
-font-weight:600
+font-weight:600;
 }
 
 .details{
 display:flex;
 justify-content:space-around;
-margin-top:18px
+margin-top:18px;
 }
 
 .details span{
 display:block;
 font-size:.7rem;
-color:#888
+color:#888;
 }
 
 .details strong{
-font-size:1.15rem
+font-size:1.15rem;
 }
 
 .ticket-bottom{
@@ -320,21 +370,23 @@ text-align:center;
 }
 
 .ticket.rip{
-animation:ripTicket .9s ease forwards
+animation:ripTicket .9s ease forwards;
 }
 
 @keyframes ripTicket{
 0%{
 transform:scale(1);
-opacity:1
+opacity:1;
 }
+
 35%{
-transform:scale(1.04) rotate(-2deg)
+transform:scale(1.04) rotate(-2deg);
 }
+
 100%{
 transform:translateY(-120px) rotate(8deg) scale(.82);
 opacity:0;
-filter:blur(10px)
+filter:blur(10px);
 }
 }
 
@@ -364,11 +416,8 @@ z-index:2;
 .falling-polaroid{
 position:absolute;
 top:-200px;
-
 width:135px;
-
 padding:10px 10px 24px;
-
 background:#fff;
 
 box-shadow:
@@ -376,29 +425,23 @@ box-shadow:
 0 3px 8px rgba(0,0,0,.08);
 
 border-radius:2px;
-
 text-align:center;
 
 animation:polaroidFall linear forwards;
-
 will-change:transform;
 }
 
 .falling-photo{
 width:100%;
 height:110px;
-
 background:#fdf3f7;
-
 overflow:hidden;
 }
 
 .falling-photo img{
 width:100%;
 height:100%;
-
 display:block;
-
 object-fit:cover;
 }
 
@@ -409,8 +452,6 @@ color:#777;
 margin-top:7px;
 letter-spacing:.3px;
 }
-
-/* FALLING ANIMATION */
 
 @keyframes polaroidFall{
 
@@ -452,8 +493,6 @@ opacity:.9;
 
 }
 
-/* MOBILE */
-
 @media(max-width:500px){
 
 .falling-polaroid{
@@ -471,8 +510,6 @@ font-size:8px;
 
 }
 
-/* PAGE 4 */
-
 #p4 h1{
 color:#d6336c;
 }
@@ -483,15 +520,178 @@ z-index:30;
 }
 
 
-/* PAGE 5 */
+/* ========================================= */
+/* PAGE 6 — HANDWRITTEN LETTER              */
+/* ========================================= */
+
+#p6{
+overflow:hidden;
+}
+
+.letter-card{
+width:min(95%,500px);
+
+background:
+linear-gradient(
+rgba(255,250,235,.96),
+rgba(255,248,225,.96)
+);
+
+padding:38px 32px 30px;
+
+border-radius:5px;
+
+box-shadow:
+0 18px 45px rgba(0,0,0,.20),
+0 3px 8px rgba(0,0,0,.08);
+
+position:relative;
+
+transform:rotate(-1deg);
+
+z-index:10;
+}
+
+/* Paper lines */
+
+.letter-card::before{
+content:"";
+position:absolute;
+inset:0;
+
+background:
+repeating-linear-gradient(
+to bottom,
+transparent 0px,
+transparent 31px,
+rgba(190,170,150,.22) 32px
+);
+
+pointer-events:none;
+}
+
+/* Little tape */
+
+.letter-tape{
+position:absolute;
+
+width:95px;
+height:25px;
+
+background:rgba(255,182,193,.55);
+
+top:-10px;
+left:50%;
+
+transform:
+translateX(-50%)
+rotate(-3deg);
+
+box-shadow:0 2px 5px rgba(0,0,0,.08);
+}
+
+.letter-content{
+position:relative;
+z-index:2;
+}
+
+.letter-title{
+font-family:'Caveat',cursive;
+font-size:2.5rem;
+color:#c94c72;
+margin-bottom:12px;
+}
+
+.letter-text{
+font-family:'Caveat',cursive;
+font-size:1.55rem;
+line-height:1.55;
+color:#5b4a45;
+text-align:left;
+}
+
+.letter-sign{
+font-family:'Caveat',cursive;
+font-size:1.7rem;
+text-align:right;
+margin-top:18px;
+color:#c94c72;
+}
+
+.letter-card button{
+font-family:'Poppins',sans-serif;
+position:relative;
+z-index:3;
+margin-top:20px;
+}
+
+
+/* ========================================= */
+/* PAGE 6 DECORATIONS                       */
+/* ========================================= */
+
+.letter-decoration{
+position:absolute;
+font-size:32px;
+opacity:.75;
+z-index:1;
+animation:tinyFloat 4s ease-in-out infinite;
+}
+
+.letter-decoration.one{
+top:10%;
+left:8%;
+}
+
+.letter-decoration.two{
+bottom:12%;
+right:8%;
+animation-delay:1s;
+}
+
+@keyframes tinyFloat{
+0%,100%{
+transform:translateY(0) rotate(-5deg);
+}
+
+50%{
+transform:translateY(-8px) rotate(5deg);
+}
+}
+
+
+/* ========================================= */
+/* PAGE 7                                    */
+/* ========================================= */
+
+#p7 .card{
+animation:finalAppear 1s ease;
+}
+
+@keyframes finalAppear{
+
+0%{
+opacity:0;
+transform:scale(.9) translateY(20px);
+}
+
+100%{
+opacity:1;
+transform:scale(1) translateY(0);
+}
+
+}
 
 </style>
 </head>
 
+
 <body>
 
 
-<!-- MUSIC -->
+<!-- ========================================= -->
+<!-- MUSIC                                    -->
+<!-- ========================================= -->
 
 <audio id="bgMusic" loop>
 <source src="music/song.mp3" type="audio/mpeg">
@@ -502,13 +702,17 @@ z-index:30;
 </button>
 
 
-<!-- INTRO -->
+<!-- ========================================= -->
+<!-- INTRO                                    -->
+<!-- ========================================= -->
 
 <section id="musicGate" class="page active">
 
 <div class="card">
 
-<div class="emoji">💌🎵</div>
+<div class="emoji">
+💌🎵
+</div>
 
 <h1>
 Before you continue...
@@ -535,13 +739,17 @@ Continue silently 🤫
 </section>
 
 
-<!-- PAGE 1 -->
+<!-- ========================================= -->
+<!-- PAGE 1                                   -->
+<!-- ========================================= -->
 
 <section id="p1" class="page">
 
 <div class="card">
 
-<div class="emoji">🐱💌</div>
+<div class="emoji">
+🐱💌
+</div>
 
 <h1>
 HELLOOO!!
@@ -560,13 +768,17 @@ Aysows ano gusto mo, Lander? ✨
 </section>
 
 
-<!-- PAGE 2 -->
+<!-- ========================================= -->
+<!-- PAGE 2                                   -->
+<!-- ========================================= -->
 
 <section id="p2" class="page">
 
 <div class="card">
 
-<div class="emoji">🌷</div>
+<div class="emoji">
+🌷
+</div>
 
 <h1>
 Do you want to watch a movie with me?
@@ -595,7 +807,9 @@ Papayag ka talagaaa >:)
 </section>
 
 
-<!-- PAGE 3 -->
+<!-- ========================================= -->
+<!-- PAGE 3                                   -->
+<!-- ========================================= -->
 
 <section id="p3" class="page">
 
@@ -612,6 +826,7 @@ ADMIT ONE
 </div>
 
 </div>
+
 
 <div class="ticket-body">
 
@@ -644,6 +859,7 @@ Andrea ✿ Lander
 
 </div>
 
+
 <div class="ticket-bottom">
 
 <button class="tear" onclick="tearTicket()">
@@ -657,7 +873,9 @@ Andrea ✿ Lander
 </section>
 
 
-<!-- PAGE 4 -->
+<!-- ========================================= -->
+<!-- PAGE 4                                   -->
+<!-- ========================================= -->
 
 <section id="p4" class="page">
 
@@ -685,19 +903,27 @@ Core memories incoming 🌸
 <div class="gallery">
 
 <div class="ph">
-<img src="photos/photo1.jpg" alt="Memory 1">
+<img
+src="photos/photo1.jpg"
+alt="Memory 1">
 </div>
 
 <div class="ph">
-<img src="photos/photo2.jpg" alt="Memory 2">
+<img
+src="photos/photo2.jpg"
+alt="Memory 2">
 </div>
 
 <div class="ph">
-<img src="photos/photo3.jpg" alt="Memory 3">
+<img
+src="photos/photo3.jpg"
+alt="Memory 3">
 </div>
 
 <div class="ph">
-<img src="photos/photo4.jpg" alt="Memory 4">
+<img
+src="photos/photo4.jpg"
+alt="Memory 4">
 </div>
 
 </div>
@@ -712,7 +938,9 @@ One last thing 💌
 </section>
 
 
-<!-- PAGE 5 -->
+<!-- ========================================= -->
+<!-- PAGE 5                                   -->
+<!-- ========================================= -->
 
 <section id="p5" class="page">
 
@@ -735,6 +963,112 @@ I'm really glad I met you.
 — Yours 🌷
 </p>
 
+<button onclick="show('p6')">
+May sasabihin pa ako... 💌
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+<!-- PAGE 6 — HANDWRITTEN LETTER             -->
+<!-- ========================================= -->
+
+<section id="p6" class="page">
+
+<div class="letter-decoration one">
+🌸
+</div>
+
+<div class="letter-decoration two">
+💗
+</div>
+
+
+<div class="letter-card">
+
+<div class="letter-tape"></div>
+
+<div class="letter-content">
+
+<div class="letter-title">
+Dear Andrea,
+</div>
+
+<div class="letter-text">
+
+<p>
+I don't really know how to put everything I feel into words,
+so I guess I'll just write it here.
+</p>
+
+<br>
+
+<p>
+Thank you for all the little things you do.
+Even the things you probably don't think much about
+mean more to me than you know.
+</p>
+
+<br>
+
+<p>
+I hope you know that you deserve people who appreciate
+you, listen to you, and stay when things get difficult.
+</p>
+
+<br>
+
+<p>
+And if you'll let me,
+I'd really like to be one of those people.
+</p>
+
+<div class="letter-sign">
+— Lander ♡
+</div>
+
+</div>
+
+
+<button onclick="show('p7')">
+Okay... one last thing 💌
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ========================================= -->
+<!-- PAGE 7 — FINAL                           -->
+<!-- ========================================= -->
+
+<section id="p7" class="page">
+
+<div class="card">
+
+<div class="emoji">
+🌙❤️
+</div>
+
+<h1>
+Thank you for reading this.
+</h1>
+
+<p>
+Whatever happens after this,
+I'm really happy I got to make something like this for you.
+</p>
+
+<p style="margin-top:14px;font-weight:600">
+I hope this made you smile. 🌷
+</p>
+
 </div>
 
 </section>
@@ -748,9 +1082,11 @@ I'm really glad I met you.
 /* MUSIC                                     */
 /* ========================================= */
 
-const bgMusic=document.getElementById("bgMusic");
+const bgMusic =
+document.getElementById("bgMusic");
 
-const musicToggle=document.getElementById("musicToggle");
+const musicToggle =
+document.getElementById("musicToggle");
 
 
 function startMusic(){
@@ -759,9 +1095,11 @@ bgMusic.volume=.5;
 
 bgMusic.play();
 
-const gate=document.getElementById("musicGate");
+const gate =
+document.getElementById("musicGate");
 
-const hello=document.getElementById("p1");
+const hello =
+document.getElementById("p1");
 
 musicToggle.style.display="block";
 
@@ -774,7 +1112,9 @@ gate.classList.remove("active");
 hello.classList.add("active");
 
 setTimeout(()=>{
+
 hello.classList.add("fade-in");
+
 },50);
 
 },1200);
@@ -784,9 +1124,11 @@ hello.classList.add("fade-in");
 
 function continueSilent(){
 
-const gate=document.getElementById("musicGate");
+const gate =
+document.getElementById("musicGate");
 
-const hello=document.getElementById("p1");
+const hello =
+document.getElementById("p1");
 
 musicToggle.style.display="block";
 
@@ -801,7 +1143,9 @@ gate.classList.remove("active");
 hello.classList.add("active");
 
 setTimeout(()=>{
+
 hello.classList.add("fade-in");
+
 },50);
 
 },1200);
@@ -835,7 +1179,9 @@ musicToggle.textContent="🔇 Music: OFF";
 function show(id){
 
 document.querySelectorAll(".page").forEach(p=>{
+
 p.classList.remove("active");
+
 });
 
 document.getElementById(id).classList.add("active");
@@ -854,9 +1200,11 @@ startPolaroidRain();
 /* NO BUTTON                                 */
 /* ========================================= */
 
-const no=document.getElementById("no");
+const no =
+document.getElementById("no");
 
-const excuse=document.getElementById("excuse");
+const excuse =
+document.getElementById("excuse");
 
 const excuses=[
 
@@ -881,10 +1229,15 @@ const excuses=[
 
 function moveNoButton(){
 
-const w=280,h=55;
+const w=280;
+const h=55;
 
 excuse.textContent=
-excuses[Math.floor(Math.random()*excuses.length)];
+excuses[
+Math.floor(
+Math.random()*excuses.length
+)
+];
 
 excuse.classList.add("show");
 
@@ -895,9 +1248,11 @@ setTimeout(()=>{
 
 no.classList.remove("shake");
 
-no.style.left=Math.random()*w+"px";
+no.style.left=
+Math.random()*w+"px";
 
-no.style.top=Math.random()*h+"px";
+no.style.top=
+Math.random()*h+"px";
 
 },180);
 
@@ -911,15 +1266,22 @@ excuse.classList.remove("show");
 }
 
 
-no.addEventListener("mouseover",moveNoButton);
+no.addEventListener(
+"mouseover",
+moveNoButton
+);
 
-no.addEventListener("click",e=>{
+
+no.addEventListener(
+"click",
+e=>{
 
 e.preventDefault();
 
 moveNoButton();
 
-});
+}
+);
 
 
 /* ========================================= */
@@ -928,9 +1290,11 @@ moveNoButton();
 
 function yes(){
 
-const card=document.querySelector("#p2 .card");
+const card =
+document.querySelector("#p2 .card");
 
-const btn=document.getElementById("yesBtn");
+const btn =
+document.getElementById("yesBtn");
 
 btn.classList.add("yes-pop");
 
@@ -948,25 +1312,30 @@ origin:{y:.65}
 
 for(let i=0;i<18;i++){
 
-const h=document.createElement("div");
+const h =
+document.createElement("div");
 
 h.className="heart";
 
-h.textContent=
-Math.random()>.5?"💖":"🌸";
+h.textContent =
+Math.random()>.5
+?"💖"
+:"🌸";
 
-h.style.left=
+h.style.left =
 (35+Math.random()*30)+"vw";
 
 h.style.bottom="35vh";
 
-h.style.fontSize=
+h.style.fontSize =
 (20+Math.random()*20)+"px";
 
 document.body.appendChild(h);
 
 setTimeout(()=>{
+
 h.remove();
+
 },7000);
 
 }
@@ -996,7 +1365,8 @@ show("p3");
 
 function tearTicket(){
 
-const ticket=document.getElementById("ticket");
+const ticket =
+document.getElementById("ticket");
 
 
 confetti({
@@ -1028,9 +1398,6 @@ show("p4");
 /* FALLING POLAROIDS                         */
 /* ========================================= */
 
-
-/* THESE ARE YOUR 4 REAL PHOTOS */
-
 const polaroidData=[
 
 {
@@ -1061,20 +1428,24 @@ let polaroidInterval=null;
 
 function createPolaroid(){
 
-const container=
-document.getElementById("polaroidRain");
+const container =
+document.getElementById(
+"polaroidRain"
+);
 
-const p=
+const p =
 document.createElement("div");
 
-p.className="falling-polaroid";
+p.className=
+"falling-polaroid";
 
 
-/* Pick one of the 4 photos */
-
-const data=
+const data =
 polaroidData[
-Math.floor(Math.random()*polaroidData.length)
+Math.floor(
+Math.random()*
+polaroidData.length
+)
 ];
 
 
@@ -1084,8 +1455,7 @@ p.innerHTML=`
 
 <img
 src="${data.image}"
-alt="Falling memory"
->
+alt="Falling memory">
 
 </div>
 
@@ -1098,15 +1468,11 @@ ${data.caption}
 `;
 
 
-/* Random horizontal position */
-
-p.style.left=
+p.style.left =
 (2+Math.random()*90)+"vw";
 
 
-/* Random rotation */
-
-const rotation=
+const rotation =
 -18+Math.random()*36;
 
 p.style.setProperty(
@@ -1115,28 +1481,15 @@ rotation+"deg"
 );
 
 
-/* Random falling speed */
-
-const duration=
+const duration =
 7+Math.random()*5;
 
-p.style.animationDuration=
+p.style.animationDuration =
 duration+"s";
-
-
-/* Random size */
-
-const scale=
-.75+Math.random()*.35;
-
-p.style.transform=
-`scale(${scale})`;
 
 
 container.appendChild(p);
 
-
-/* Remove after animation */
 
 setTimeout(()=>{
 
@@ -1155,18 +1508,26 @@ function startPolaroidRain(){
 
 if(polaroidInterval){
 
-clearInterval(polaroidInterval);
+clearInterval(
+polaroidInterval
+);
 
 }
 
 
-const container=
-document.getElementById("polaroidRain");
+const container =
+document.getElementById(
+"polaroidRain"
+);
 
 container.innerHTML="";
 
 
-/* Create some immediately */
+/*
+First Polaroid waits 3 seconds.
+Then the next ones arrive
+every 700ms.
+*/
 
 for(let i=0;i<7;i++){
 
@@ -1174,14 +1535,12 @@ setTimeout(()=>{
 
 createPolaroid();
 
-},3000 + i*450);
+},3000+i*700);
 
 }
 
 
-/* Continue falling */
-
-polaroidInterval=
+polaroidInterval =
 setInterval(()=>{
 
 createPolaroid();
@@ -1197,17 +1556,20 @@ createPolaroid();
 
 setInterval(()=>{
 
-const d=document.createElement("div");
+const d =
+document.createElement("div");
 
 d.className="heart";
 
-d.textContent=
-Math.random()>.5?"❤":"💖";
+d.textContent =
+Math.random()>.5
+?"❤"
+:"💖";
 
-d.style.left=
+d.style.left =
 Math.random()*100+"vw";
 
-d.style.fontSize=
+d.style.fontSize =
 (16+Math.random()*18)+"px";
 
 document.body.appendChild(d);
