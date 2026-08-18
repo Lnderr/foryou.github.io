@@ -3,20 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>For Andrea 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
     font-family:Poppins,sans-serif;
@@ -24,13 +17,13 @@ body{
     background-size:400% 400%;
     animation:bg 12s ease infinite;
     overflow:hidden;
-    color:#522
+    color:#522;
 }
 
 @keyframes bg{
-    0%{background-position:0 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0 50%}
+0%{background-position:0 50%}
+50%{background-position:100% 50%}
+100%{background-position:0 50%}
 }
 
 .page{
@@ -38,12 +31,10 @@ body{
     min-height:100vh;
     align-items:center;
     justify-content:center;
-    padding:24px
+    padding:24px;
 }
 
-.active{
-    display:flex
-}
+.active{display:flex}
 
 .card{
     width:min(95%,480px);
@@ -52,21 +43,17 @@ body{
     padding:32px;
     border-radius:28px;
     box-shadow:0 20px 60px rgba(0,0,0,.2);
-    text-align:center
+    text-align:center;
 }
 
-h1,h2{
-    font-family:"Playfair Display",serif
-}
+h1,h2{font-family:"Playfair Display",serif}
 
 h1{
     font-size:2.2rem;
-    margin:.4rem 0 1rem
+    margin:.4rem 0 1rem;
 }
 
-p{
-    line-height:1.7
-}
+p{line-height:1.7}
 
 button{
     border:none;
@@ -78,50 +65,47 @@ button{
     cursor:pointer;
     margin:8px;
     box-shadow:0 10px 25px rgba(255,77,136,.35);
-    transition:transform .2s ease, box-shadow .2s ease
+    transition:.25s;
 }
 
 button:hover{
     transform:translateY(-2px);
-    box-shadow:0 14px 30px rgba(255,77,136,.4)
 }
 
 .secondary{
     background:#fff;
-    color:#ff4d88
+    color:#ff4d88;
 }
 
-.emoji{
-    font-size:64px
-}
+.emoji{font-size:64px}
 
 .gallery{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:12px;
-    margin:18px 0
+    margin:18px 0;
 }
 
 .ph{
     background:#fff;
     border-radius:18px;
     padding:18px;
-    font-size:40px
+    font-size:40px;
 }
 
 .small{
     font-size:.9rem;
     opacity:.75;
-    margin-top:8px
-}
-
-#no{
-    position:absolute
+    margin-top:8px;
 }
 
 .wrap{
     position:relative;
-    height:90px
+    height:100px;
+}
+
+#no{
+    position:absolute;
 }
 
 .heart{
@@ -130,40 +114,29 @@ button:hover{
     font-size:18px;
     animation:float 7s linear forwards;
     pointer-events:none;
-    z-index:5
 }
 
 @keyframes float{
     to{
         transform:translateY(-120vh);
-        opacity:0
+        opacity:0;
     }
 }
-
-
-/* =========================
-   MUSIC BUTTON
-========================= */
 
 #musicToggle{
     position:fixed;
     bottom:20px;
     right:20px;
-    z-index:1000;
+    z-index:999;
+    display:none;
     padding:10px 16px;
     font-size:.85rem;
-    margin:0;
 }
-
-
-/* =========================
-   MUSIC INTRO
-========================= */
 
 #musicGate{
     position:fixed;
     inset:0;
-    z-index:2000;
+    z-index:1000;
     opacity:1;
     transition:opacity 1.2s ease;
 }
@@ -174,9 +147,7 @@ button:hover{
 }
 
 #musicGate .card{
-    transition:
-        transform 1.2s ease,
-        opacity 1.2s ease;
+    transition:1.2s ease;
 }
 
 #musicGate.fade-out .card{
@@ -184,437 +155,182 @@ button:hover{
     opacity:0;
 }
 
-
-/* =========================
-   HELLO PAGE FADE IN
-========================= */
-
 #p1{
     opacity:0;
     transform:scale(1.03);
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
+    transition:1.2s ease;
 }
 
 #p1.fade-in{
     opacity:1;
     transform:scale(1);
 }
-
 </style>
 </head>
-
 <body>
-
-
-<!-- =========================
-     MUSIC
-========================= -->
 
 <audio id="bgMusic" loop>
     <source src="music/song.mp3" type="audio/mpeg">
 </audio>
 
-
-<!-- =========================
-     MUSIC TOGGLE
-========================= -->
-
-<button
-    id="musicToggle"
-    onclick="toggleMusic()"
-    style="display:none;"
->
-    🎵 Music: ON
-</button>
-
-
-<!-- =========================
-     MUSIC INTRO
-========================= -->
+<button id="musicToggle" onclick="toggleMusic()">🎵 Music: ON</button>
 
 <section id="musicGate" class="page active">
-
     <div class="card">
-
         <div class="emoji">💌🎵</div>
-
         <h1>Before you continue...</h1>
-
-        <p>
-            I picked a little something to play
-            while you look around.
-        </p>
-
-        <button onclick="startMusic()">
-            🎵 Turn on the music
-        </button>
-
-        <p class="small">
-            or continue silently, I won't judge :>
-        </p>
-
-        <button
-            class="secondary"
-            onclick="continueSilent()"
-        >
-            Continue silently 🤫
-        </button>
-
+        <p>I picked a little something to play while you look around.</p>
+        <button onclick="startMusic()">🎵 Turn on the music</button>
+        <p class="small">or continue silently, I won't judge :></p>
+        <button class="secondary" onclick="continueSilent()">Continue silently 🤫</button>
     </div>
-
 </section>
-
-
-<!-- =========================
-     PAGE 1
-========================= -->
 
 <section id="p1" class="page">
-
     <div class="card">
-
         <div class="emoji">🐱💌</div>
-
         <h1>HELLOOO!!</h1>
-
-        <p>
-            Ginawa ko tongg website nato para sauuu
-        </p>
-
-        <button onclick="show('p2')">
-            Aysows ano gusto mo, Lander? ✨
-        </button>
-
+        <p>Ginawa ko tongg website nato para sauuu</p>
+        <button onclick="show('p2')">Aysows ano gusto mo, Lander? ✨</button>
     </div>
-
 </section>
-
-
-<!-- =========================
-     PAGE 2
-========================= -->
 
 <section id="p2" class="page">
-
     <div class="card">
-
         <div class="emoji">🌷</div>
-
-        <h1>
-            Do you want to watch a movie with me?
-        </h1>
+        <h1>Do you want to watch a movie with me?</h1>
 
         <div class="wrap">
-
-            <button onclick="yes()">
-                YESSS 💖
-            </button>
-
-            <button id="no">
-                Ayoko nga🙈
-            </button>
-
+            <button onclick="yes()">YESSS 💖</button>
+            <button id="no">Ayoko nga🙈</button>
         </div>
 
-        <div class="small">
-            Papayag ka talagaaa >:)
-        </div>
-
+        <div class="small">Papayag ka talagaaa >:)</div>
     </div>
-
 </section>
-
-
-<!-- =========================
-     PAGE 3
-========================= -->
 
 <section id="p3" class="page">
-
     <div class="card">
-
         <div class="emoji">💗</div>
-
         <h1>Placeholder</h1>
-
-        <p>
-            Placeholder
-        </p>
-
-        <button onclick="show('p4')">
-            OO NGA PALA →
-        </button>
-
+        <p>Placeholder</p>
+        <button onclick="show('p4')">OO NGA PALA →</button>
     </div>
-
 </section>
 
-
-<!-- =========================
-     PAGE 4
-========================= -->
-
 <section id="p4" class="page">
-
     <div class="card">
-
         <div class="emoji">📸</div>
-
         <h1>Placeholder</h1>
-
-        <p class="small">
-            Placeholder Text
-        </p>
+        <p class="small">Placeholder Text</p>
 
         <div class="gallery">
-
             <div class="ph">🩷</div>
             <div class="ph">🌸</div>
             <div class="ph">☕</div>
             <div class="ph">🎀</div>
-
         </div>
 
-        <button onclick="show('p5')">
-            Final page 💌
-        </button>
-
+        <button onclick="show('p5')">Final page 💌</button>
     </div>
-
 </section>
-
-
-<!-- =========================
-     PAGE 5
-========================= -->
 
 <section id="p5" class="page">
-
     <div class="card">
-
         <div class="emoji">🌙❤️</div>
-
         <h1>Crush kitaa</h1>
-
-        <p>
-            Whether today becomes a memory or the start
-            of something beautiful, I'm really glad I met you.
-        </p>
-
-        <p style="margin-top:14px;font-weight:600">
-            — Yours 🌷
-        </p>
-
+        <p>Whether today becomes a memory or the start of something beautiful, I'm really glad I met you.</p>
+        <p style="margin-top:14px;font-weight:600">— Yours 🌷</p>
     </div>
-
 </section>
 
-
 <script>
-
-
-/* =========================
-   MUSIC SYSTEM
-========================= */
-
-const bgMusic =
-    document.getElementById('bgMusic');
-
-const musicToggle =
-    document.getElementById('musicToggle');
-
+const bgMusic=document.getElementById('bgMusic');
+const musicToggle=document.getElementById('musicToggle');
 
 function startMusic(){
-
-    bgMusic.volume = 0.5;
-
+    bgMusic.volume=0.5;
     bgMusic.play();
 
-    const gate =
-        document.getElementById('musicGate');
+    const gate=document.getElementById('musicGate');
+    const first=document.getElementById('p1');
 
-    const firstPage =
-        document.getElementById('p1');
-
-    musicToggle.style.display = 'block';
-
-    /* Start the fade */
-
+    musicToggle.style.display='block';
     gate.classList.add('fade-out');
 
-
-    /* Wait for fade to finish */
-
-    setTimeout(() => {
-
+    setTimeout(()=>{
         gate.classList.remove('active');
-
-        firstPage.classList.add('active');
-
-        /* Start HELLOOO fade */
-
-        setTimeout(() => {
-
-            firstPage.classList.add('fade-in');
-
-        },50);
-
+        first.classList.add('active');
+        setTimeout(()=>first.classList.add('fade-in'),50);
     },1200);
-
 }
-
 
 function continueSilent(){
+    const gate=document.getElementById('musicGate');
+    const first=document.getElementById('p1');
 
-    const gate =
-        document.getElementById('musicGate');
-
-    const firstPage =
-        document.getElementById('p1');
-
-    musicToggle.style.display = 'block';
-
-    musicToggle.textContent =
-        '🔇 Music: OFF';
-
-    /* Start the fade */
+    musicToggle.style.display='block';
+    musicToggle.textContent='🔇 Music: OFF';
 
     gate.classList.add('fade-out');
 
-
-    /* Wait for fade to finish */
-
-    setTimeout(() => {
-
+    setTimeout(()=>{
         gate.classList.remove('active');
-
-        firstPage.classList.add('active');
-
-        /* Start HELLOOO fade */
-
-        setTimeout(() => {
-
-            firstPage.classList.add('fade-in');
-
-        },50);
-
+        first.classList.add('active');
+        setTimeout(()=>first.classList.add('fade-in'),50);
     },1200);
-
 }
-
 
 function toggleMusic(){
-
     if(bgMusic.paused){
-
         bgMusic.play();
-
-        musicToggle.textContent =
-            '🎵 Music: ON';
-
+        musicToggle.textContent='🎵 Music: ON';
     }else{
-
         bgMusic.pause();
-
-        musicToggle.textContent =
-            '🔇 Music: OFF';
-
+        musicToggle.textContent='🔇 Music: OFF';
     }
-
 }
-
-
-/* =========================
-   PAGE SYSTEM
-========================= */
 
 function show(id){
-
-    document
-        .querySelectorAll('.page')
-        .forEach(p =>
-            p.classList.remove('active')
-        );
-
-    document
-        .getElementById(id)
-        .classList.add('active');
-
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
 }
 
+const no=document.getElementById('no');
 
-/* =========================
-   NO BUTTON
-========================= */
+function moveNoButton(){
+    const w=280;
+    const h=50;
 
-const no =
-    document.getElementById('no');
+    no.style.left=Math.random()*w+'px';
+    no.style.top=Math.random()*h+'px';
+}
 
+no.addEventListener('mouseover',moveNoButton);
 
-no.addEventListener('mouseover',()=>{
-
-    const w = 280;
-    const h = 40;
-
-    no.style.left =
-        Math.random()*w+'px';
-
-    no.style.top =
-        Math.random()*h+'px';
-
+no.addEventListener('click',(e)=>{
+    e.preventDefault();
+    moveNoButton();
 });
 
-
-/* =========================
-   YES BUTTON
-========================= */
-
 function yes(){
-
     confetti({
         particleCount:220,
         spread:120,
         origin:{y:.6}
     });
-
     show('p3');
-
 }
 
-
-/* =========================
-   FLOATING HEARTS
-========================= */
-
 setInterval(()=>{
-
-    const d =
-        document.createElement('div');
-
-    d.className = 'heart';
-
-    d.textContent =
-        Math.random() > .5
-        ? '❤'
-        : '💖';
-
-    d.style.left =
-        Math.random()*100+'vw';
-
-    d.style.fontSize =
-        (16+Math.random()*18)+'px';
-
+    const d=document.createElement('div');
+    d.className='heart';
+    d.textContent=Math.random()>.5?'❤':'💖';
+    d.style.left=Math.random()*100+'vw';
+    d.style.fontSize=(16+Math.random()*18)+'px';
     document.body.appendChild(d);
-
-    setTimeout(()=>{
-        d.remove();
-    },7000);
-
+    setTimeout(()=>d.remove(),7000);
 },380);
-
-
 </script>
 
 </body>
