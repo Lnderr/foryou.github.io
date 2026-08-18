@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Andrea 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
-    font-family:Poppins,sans-serif;
+    font-family:'Poppins',sans-serif;
     background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
     background-size:400% 400%;
     animation:bg 12s ease infinite;
@@ -21,51 +25,54 @@ body{
 }
 
 @keyframes bg{
-0%{background-position:0 50%}
-50%{background-position:100% 50%}
-100%{background-position:0 50%}
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 .page{
     display:none;
     min-height:100vh;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     padding:24px;
 }
 
-.active{display:flex}
+.active{
+    display:flex;
+}
 
 .card{
     width:min(95%,480px);
     background:rgba(255,255,255,.78);
     backdrop-filter:blur(18px);
-    padding:32px;
     border-radius:28px;
-    box-shadow:0 20px 60px rgba(0,0,0,.2);
+    padding:32px;
     text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
 }
-
-h1,h2{font-family:"Playfair Display",serif}
 
 h1{
+    font-family:'Playfair Display',serif;
     font-size:2.2rem;
-    margin:.4rem 0 1rem;
+    margin:.5rem 0 1rem;
 }
 
-p{line-height:1.7}
+p{
+    line-height:1.7;
+}
 
 button{
     border:none;
     border-radius:999px;
     padding:14px 24px;
+    margin:8px;
     background:#ff4d88;
-    color:#fff;
+    color:white;
     font-weight:600;
     cursor:pointer;
-    margin:8px;
-    box-shadow:0 10px 25px rgba(255,77,136,.35);
     transition:.25s;
+    box-shadow:0 10px 25px rgba(255,77,136,.35);
 }
 
 button:hover{
@@ -73,11 +80,19 @@ button:hover{
 }
 
 .secondary{
-    background:#fff;
+    background:white;
     color:#ff4d88;
 }
 
-.emoji{font-size:64px}
+.emoji{
+    font-size:64px;
+}
+
+.small{
+    opacity:.75;
+    font-size:.9rem;
+    margin-top:8px;
+}
 
 .gallery{
     display:grid;
@@ -87,31 +102,17 @@ button:hover{
 }
 
 .ph{
-    background:#fff;
+    background:white;
     border-radius:18px;
     padding:18px;
     font-size:40px;
 }
 
-.small{
-    font-size:.9rem;
-    opacity:.75;
-    margin-top:8px;
-}
-
-.wrap{
-    position:relative;
-    height:100px;
-}
-
-#no{
-    position:absolute;
-}
+/* floating hearts */
 
 .heart{
     position:fixed;
     bottom:-20px;
-    font-size:18px;
     animation:float 7s linear forwards;
     pointer-events:none;
 }
@@ -123,12 +124,14 @@ button:hover{
     }
 }
 
+/* music */
+
 #musicToggle{
     position:fixed;
     bottom:20px;
     right:20px;
-    z-index:999;
     display:none;
+    z-index:999;
     padding:10px 16px;
     font-size:.85rem;
 }
@@ -151,9 +154,11 @@ button:hover{
 }
 
 #musicGate.fade-out .card{
-    transform:scale(.95) translateY(-10px);
     opacity:0;
+    transform:scale(.95) translateY(-10px);
 }
+
+/* hello transition */
 
 #p1{
     opacity:0;
@@ -165,6 +170,51 @@ button:hover{
     opacity:1;
     transform:scale(1);
 }
+
+/* NO button chaos */
+
+.wrap{
+    position:relative;
+    height:110px;
+}
+
+#no{
+    position:absolute;
+}
+
+#no.shake{
+    animation:shake .22s ease;
+}
+
+@keyframes shake{
+    0%{transform:translateX(0)}
+    25%{transform:translateX(-5px)}
+    50%{transform:translateX(5px)}
+    75%{transform:translateX(-4px)}
+    100%{transform:translateX(0)}
+}
+
+#excuse{
+    position:absolute;
+    left:50%;
+    top:-30px;
+    transform:translateX(-50%);
+    background:white;
+    color:#ff4d88;
+    padding:4px 10px;
+    border-radius:999px;
+    font-size:.75rem;
+    font-weight:600;
+    white-space:nowrap;
+    opacity:0;
+    transition:.2s;
+    pointer-events:none;
+}
+
+#excuse.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(-4px);
+}
 </style>
 </head>
 <body>
@@ -175,54 +225,98 @@ button:hover{
 
 <button id="musicToggle" onclick="toggleMusic()">🎵 Music: ON</button>
 
+<!-- MUSIC INTRO -->
+
 <section id="musicGate" class="page active">
     <div class="card">
         <div class="emoji">💌🎵</div>
         <h1>Before you continue...</h1>
-        <p>I picked a little something to play while you look around.</p>
-        <button onclick="startMusic()">🎵 Turn on the music</button>
-        <p class="small">or continue silently, I won't judge :></p>
-        <button class="secondary" onclick="continueSilent()">Continue silently 🤫</button>
+
+        <p>
+            I picked a little something to play
+            while you look around.
+        </p>
+
+        <button onclick="startMusic()">
+            🎵 Turn on the music
+        </button>
+
+        <p class="small">
+            or continue silently, I won't judge :>
+        </p>
+
+        <button class="secondary" onclick="continueSilent()">
+            Continue silently 🤫
+        </button>
     </div>
 </section>
+
+<!-- PAGE 1 -->
 
 <section id="p1" class="page">
     <div class="card">
         <div class="emoji">🐱💌</div>
         <h1>HELLOOO!!</h1>
         <p>Ginawa ko tongg website nato para sauuu</p>
-        <button onclick="show('p2')">Aysows ano gusto mo, Lander? ✨</button>
+
+        <button onclick="show('p2')">
+            Aysows ano gusto mo, Lander? ✨
+        </button>
     </div>
 </section>
+
+<!-- PAGE 2 -->
 
 <section id="p2" class="page">
     <div class="card">
         <div class="emoji">🌷</div>
+
         <h1>Do you want to watch a movie with me?</h1>
 
         <div class="wrap">
-            <button onclick="yes()">YESSS 💖</button>
-            <button id="no">Ayoko nga🙈</button>
+
+            <div id="excuse"></div>
+
+            <button onclick="yes()">
+                YESSS 💖
+            </button>
+
+            <button id="no">
+                Ayoko nga🙈
+            </button>
+
         </div>
 
-        <div class="small">Papayag ka talagaaa >:)</div>
+        <div class="small">
+            Papayag ka talagaaa >:)
+        </div>
     </div>
 </section>
+
+<!-- PAGE 3 -->
 
 <section id="p3" class="page">
     <div class="card">
         <div class="emoji">💗</div>
         <h1>Placeholder</h1>
         <p>Placeholder</p>
-        <button onclick="show('p4')">OO NGA PALA →</button>
+
+        <button onclick="show('p4')">
+            OO NGA PALA →
+        </button>
     </div>
 </section>
+
+<!-- PAGE 4 -->
 
 <section id="p4" class="page">
     <div class="card">
         <div class="emoji">📸</div>
         <h1>Placeholder</h1>
-        <p class="small">Placeholder Text</p>
+
+        <p class="small">
+            Placeholder Text
+        </p>
 
         <div class="gallery">
             <div class="ph">🩷</div>
@@ -231,106 +325,205 @@ button:hover{
             <div class="ph">🎀</div>
         </div>
 
-        <button onclick="show('p5')">Final page 💌</button>
+        <button onclick="show('p5')">
+            Final page 💌
+        </button>
     </div>
 </section>
+
+<!-- PAGE 5 -->
 
 <section id="p5" class="page">
     <div class="card">
         <div class="emoji">🌙❤️</div>
         <h1>Crush kitaa</h1>
-        <p>Whether today becomes a memory or the start of something beautiful, I'm really glad I met you.</p>
-        <p style="margin-top:14px;font-weight:600">— Yours 🌷</p>
+
+        <p>
+            Whether today becomes a memory or the start of something beautiful,
+            I'm really glad I met you.
+        </p>
+
+        <p style="margin-top:14px;font-weight:600">
+            — Yours 🌷
+        </p>
     </div>
 </section>
 
 <script>
-const bgMusic=document.getElementById('bgMusic');
-const musicToggle=document.getElementById('musicToggle');
+
+// ==========================
+// MUSIC
+// ==========================
+
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
 
 function startMusic(){
-    bgMusic.volume=0.5;
+
+    bgMusic.volume = 0.5;
     bgMusic.play();
 
-    const gate=document.getElementById('musicGate');
-    const first=document.getElementById('p1');
+    const gate = document.getElementById("musicGate");
+    const hello = document.getElementById("p1");
 
-    musicToggle.style.display='block';
-    gate.classList.add('fade-out');
+    musicToggle.style.display = "block";
+
+    gate.classList.add("fade-out");
 
     setTimeout(()=>{
-        gate.classList.remove('active');
-        first.classList.add('active');
-        setTimeout(()=>first.classList.add('fade-in'),50);
+
+        gate.classList.remove("active");
+        hello.classList.add("active");
+
+        setTimeout(()=>{
+            hello.classList.add("fade-in");
+        },50);
+
     },1200);
+
 }
 
 function continueSilent(){
-    const gate=document.getElementById('musicGate');
-    const first=document.getElementById('p1');
 
-    musicToggle.style.display='block';
-    musicToggle.textContent='🔇 Music: OFF';
+    const gate = document.getElementById("musicGate");
+    const hello = document.getElementById("p1");
 
-    gate.classList.add('fade-out');
+    musicToggle.style.display = "block";
+    musicToggle.textContent = "🔇 Music: OFF";
+
+    gate.classList.add("fade-out");
 
     setTimeout(()=>{
-        gate.classList.remove('active');
-        first.classList.add('active');
-        setTimeout(()=>first.classList.add('fade-in'),50);
+
+        gate.classList.remove("active");
+        hello.classList.add("active");
+
+        setTimeout(()=>{
+            hello.classList.add("fade-in");
+        },50);
+
     },1200);
+
 }
 
 function toggleMusic(){
+
     if(bgMusic.paused){
+
         bgMusic.play();
-        musicToggle.textContent='🎵 Music: ON';
+        musicToggle.textContent = "🎵 Music: ON";
+
     }else{
+
         bgMusic.pause();
-        musicToggle.textContent='🔇 Music: OFF';
+        musicToggle.textContent = "🔇 Music: OFF";
+
     }
+
 }
+
+// ==========================
+// PAGE SYSTEM
+// ==========================
 
 function show(id){
-    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+
+    document.querySelectorAll(".page")
+    .forEach(p=>p.classList.remove("active"));
+
+    document.getElementById(id)
+    .classList.add("active");
+
 }
 
-const no=document.getElementById('no');
+// ==========================
+// CHAOTIC NO BUTTON 😭
+// ==========================
+
+const no = document.getElementById("no");
+const excuse = document.getElementById("excuse");
+
+const excuses = [
+    "hala wait 😭",
+    "nice try HAHAHA",
+    "di pwede 😤",
+    "wrong answer 🤨",
+    "ayaw ko... char",
+    "eh bakit 😭",
+    "try mo ulit 😼",
+    "no no no 🏃‍♀️"
+];
 
 function moveNoButton(){
-    const w=280;
-    const h=50;
 
-    no.style.left=Math.random()*w+'px';
-    no.style.top=Math.random()*h+'px';
+    const w = 280;
+    const h = 55;
+
+    excuse.textContent =
+        excuses[Math.floor(Math.random()*excuses.length)];
+
+    excuse.classList.add("show");
+
+    no.classList.add("shake");
+
+    setTimeout(()=>{
+
+        no.classList.remove("shake");
+
+        no.style.left = Math.random()*w + "px";
+        no.style.top = Math.random()*h + "px";
+
+    },180);
+
+    setTimeout(()=>{
+        excuse.classList.remove("show");
+    },900);
+
 }
 
-no.addEventListener('mouseover',moveNoButton);
+no.addEventListener("mouseover",moveNoButton);
 
-no.addEventListener('click',(e)=>{
+no.addEventListener("click",(e)=>{
     e.preventDefault();
     moveNoButton();
 });
 
+// ==========================
+// YES
+// ==========================
+
 function yes(){
+
     confetti({
         particleCount:220,
         spread:120,
         origin:{y:.6}
     });
-    show('p3');
+
+    show("p3");
+
 }
 
+// ==========================
+// HEARTS
+// ==========================
+
 setInterval(()=>{
-    const d=document.createElement('div');
-    d.className='heart';
-    d.textContent=Math.random()>.5?'❤':'💖';
-    d.style.left=Math.random()*100+'vw';
-    d.style.fontSize=(16+Math.random()*18)+'px';
+
+    const d = document.createElement("div");
+
+    d.className = "heart";
+    d.textContent = Math.random()>.5 ? "❤" : "💖";
+
+    d.style.left = Math.random()*100 + "vw";
+    d.style.fontSize = (16+Math.random()*18)+"px";
+
     document.body.appendChild(d);
+
     setTimeout(()=>d.remove(),7000);
+
 },380);
+
 </script>
 
 </body>
